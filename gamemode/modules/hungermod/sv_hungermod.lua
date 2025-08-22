@@ -1,16 +1,7 @@
--- Timer toutes les 10 minutes pour signaler la faim très basse
-local function HungerLowNotify()
-    for _, ply in ipairs(player.GetAll()) do
-        if ply:getDarkRPVar("Energy") and ply:getDarkRPVar("Energy") < 10 then
-            -- Exécute la commande /ado
-            ply:ConCommand("say /ado Le ventre de l'individu gargouille.")
-            -- Envoie un message indicatif
-            DarkRP.notify(ply, 1, 8, "Votre ventre gargouille, vous devriez manger quelque chose !")
-        end
-    end
+local function HMPlayerInitialSpawn(ply)
+    ply:newHungerData()
 end
-
-timer.Create("HungerLowNotify", 600, 0, HungerLowNotify) -- 600 secondes = 10 minutes
+hook.Add("PlayerInitialSpawn", "HMPlayerInitialSpawn", HMPlayerInitialSpawn)
 
 local function HMPlayerSpawn(ply)
     ply:setSelfDarkRPVar("Energy", 100)
@@ -28,43 +19,66 @@ local function HMThink()
         end
     end
 end
+timer.Create("HMThink", 10, 0, HMThink)
 
--- Optimization : round robin on the players to avoid load spikes
-local hungermod_rr_index = 1
-local hungermod_rr_batch = 8 -- Number of players processed per tick (adjustable)
-local hungermod_rr_interval = 1 -- Timer interval in seconds (more frequent, less load per tick)
+-- Table pour cooldown individuel de notification
+hungerLowNotifyCooldown = {}
 
-local function HMThinkOptimized()
-    local players = player.GetAll()
-    local total = #players
-    if total == 0 then return end
+local function HungerLowNotify()
+    local now = CurTime()
+    for _, ply in ipairs(player.GetAll()) do
+        local energy = ply:getDarkRPVar("Energy")
+        if not energy or energy >= 25 then continue end
 
-    -- Calculate the range of players to process
-    local startIdx = hungermod_rr_index
-    local endIdx = math.min(hungermod_rr_index + hungermod_rr_batch - 1, total)
+        -- Utilisation de SteamID64 pour éviter les problèmes de référence d'objet
+        local sid = ply:SteamID64()
+        local last = hungerLowNotifyCooldown[sid] or 0
 
-    for i = startIdx, endIdx do
-        local v = players[i]
-        if IsValid(v) and v:Alive() then
-            v:hungerUpdate()
+        -- Le joueur ne doit recevoir qu'un message toutes les 5 minutes max
+        if now - last < (60*5) then continue end
+        hungerLowNotifyCooldown[sid] = now
+
+        local adoMsg, notifyMsg
+        local hp = ply:Health() or 100
+
+        if energy < 6 then
+            adoMsg = "L'individu semble très pâle et vacille, il paraît au bord du malaise."
+            if hp <= 15 then
+                notifyMsg = "Vous êtes au bord de l'évanouissement, votre vision se trouble et vous tenez à peine debout ! Mangez immédiatement ou vous risquez de tomber inconscient."
+            elseif hp <= 30 then
+                notifyMsg = "Votre tête tourne, vous êtes très faible et votre santé est critique. Mangez vite !"
+            else
+                notifyMsg = "Vous êtes extrêmement faible, votre tête tourne et vous avez du mal à tenir debout ! Mangez immédiatement."
+            end
+        elseif energy < 11 then
+            adoMsg = "L'individu a le visage blême et vacille légèrement."
+            if hp <= 20 then
+                notifyMsg = "Votre faim aggrave votre état de santé déjà bas, vous vous sentez très mal."
+            else
+                notifyMsg = "Votre tête commence à tourner, vous vous sentez très faible. Mangez vite !"
+            end
+        elseif energy < 16 then
+            adoMsg = "Le ventre de l'individu gargouille bruyamment."
+            if hp <= 20 then
+                notifyMsg = "Votre faim se fait sentir et votre santé est basse, soyez prudent."
+            else
+                notifyMsg = "Votre ventre gargouille fort, la faim devient difficile à ignorer."
+            end
+        else -- energy < 25
+            adoMsg = "Le ventre de l'individu se met à gargouiller."
+            if hp <= 20 then
+                notifyMsg = "Vous commencez à avoir faim et votre santé est faible, pensez à manger bientôt."
+            else
+                notifyMsg = "Vous commencez à avoir faim, pensez à manger bientôt."
+            end
         end
-    end
 
-    -- Update the index for the next tick
-    hungermod_rr_index = endIdx + 1
-    if hungermod_rr_index > total then
-        hungermod_rr_index = 1
+        ply:ConCommand("say /ado " .. adoMsg)
+        DarkRP.notify(ply, 1, 8, notifyMsg)
     end
 end
 
-timer.Create("HMThinkOptimized", hungermod_rr_interval, 0, HMThinkOptimized)
-
-local function HMPlayerInitialSpawn(ply)
-    ply:newHungerData()
-end
-hook.Add("PlayerInitialSpawn", "HMPlayerInitialSpawn", HMPlayerInitialSpawn)
-
-
+timer.Create("HungerLowNotify", 60, 0, HungerLowNotify)
 
 local function BuyFood(ply, args)
     if args == "" then
