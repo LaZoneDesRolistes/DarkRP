@@ -277,7 +277,7 @@ local function ChangeJob(ply, args)
     end
 
     local job = replace or args
-    DarkRP.notifyAll(2, 4, DarkRP.getPhrase("job_has_become", ply:Nick(), job))
+    -- DarkRP.notifyAll(2, 4, DarkRP.getPhrase("job_has_become", ply:Nick(), job))
     ply:updateJob(job)
     return ""
 end

@@ -16,18 +16,18 @@ function meta:hungerUpdate()
 
     if self:getDarkRPVar("Energy") == 0 then
         local health = self:Health()
-
-        local dmg = DamageInfo()
-        dmg:SetDamage(GAMEMODE.Config.starverate)
-        dmg:SetInflictor(self)
-        dmg:SetAttacker(self)
-        dmg:SetDamageType(bit.bor(DMG_DISSOLVE, DMG_NERVEGAS))
-
-        self:TakeDamageInfo(dmg)
-
-        if health - GAMEMODE.Config.starverate <= 0 then
-            self.Slayed = true
-            hook.Call("playerStarved", nil, self)
+        if health > 10 then
+            local dmg = DamageInfo()
+            local dmgAmount = math.min(GAMEMODE.Config.starverate, health - 10)
+            dmg:SetDamage(dmgAmount)
+            dmg:SetInflictor(self)
+            dmg:SetAttacker(self)
+            dmg:SetDamageType(bit.bor(DMG_DISSOLVE, DMG_NERVEGAS))
+            self:TakeDamageInfo(dmg)
+        end
+        -- Ne jamais descendre sous 10 HP, ni tuer le joueur
+        if self:Health() < 10 then
+            self:SetHealth(10)
         end
     end
 end
