@@ -120,24 +120,6 @@ TEAM_GUN = DarkRP.createJob("Gun Dealer", {
     category = "Citizens",
 })
 
-TEAM_MEDIC = DarkRP.createJob("Medic", {
-    color = Color(47, 79, 79, 255),
-    model = "models/player/kleiner.mdl",
-    description = [[With your medical knowledge you work to restore players to full health.
-        Without a medic, people cannot be healed.
-        Left click with the Medical Kit to heal other players.
-        Right click with the Medical Kit to heal yourself.]],
-    weapons = {"med_kit"},
-    command = "medic",
-    max = 3,
-    salary = GAMEMODE.Config.normalsalary,
-    admin = 0,
-    vote = false,
-    hasLicense = false,
-    medic = true,
-    category = "Citizens",
-})
-
 TEAM_CHIEF = DarkRP.createJob("Civil Protection Chief", {
     color = Color(20, 20, 255, 255),
     model = "models/player/combine_soldier_prisonguard.mdl",
@@ -258,9 +240,6 @@ GAMEMODE.CivilProtection = {
     [TEAM_CHIEF] = true,
     [TEAM_MAYOR] = true,
 }
-
--- Hitman team
-DarkRP.addHitmanTeam(TEAM_MOB)
 
 -- Demote groups
 DarkRP.createDemoteGroup("Cops", {TEAM_POLICE, TEAM_CHIEF})
