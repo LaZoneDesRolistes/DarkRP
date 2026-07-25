@@ -10,14 +10,6 @@ function GM:Initialize()
     self.Sandbox.Initialize(self)
 end
 
-function GM:playerBuyDoor(ply, ent)
-    if ply:getJobTable().hobo then
-        return false, DarkRP.getPhrase("door_hobo_unable")
-    end
-
-    return true
-end
-
 function GM:getDoorCost(ply, ent)
     return GAMEMODE.Config.doorcost ~= 0 and GAMEMODE.Config.doorcost or 30
 end

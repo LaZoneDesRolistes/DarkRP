@@ -126,10 +126,7 @@ local my_language = {
 
     -- Teams
     need_to_be_before = "You need to be %s first in order to be able to become %s",
-    need_to_make_vote = "You need to make a vote to become a %s!",
     team_limit_reached = "Can not become %s as the limit is reached",
-    wants_to_be = "%s\nwants to be\n%s",
-    has_not_been_made_team = "%s has not been made %s!",
     job_has_become = "%s has been made a %s!",
 
     -- Disasters
@@ -153,7 +150,6 @@ local my_language = {
     door_sold = "You have sold this for %s",
     door_already_owned = "This door is already owned by someone!",
     door_cannot_afford = "You can not afford this door!",
-    door_hobo_unable = "You can not buy a door if you are a hobo!",
     vehicle_cannot_afford = "You can not afford this vehicle!",
     door_bought = "You've bought this door for %s%s",
     vehicle_bought = "You've bought this vehicle for %s%s",
@@ -389,80 +385,11 @@ local my_language = {
     someone_stole_steam_name = "Someone is already using your Steam name as their RP name so we gave you a '1' after your name.", -- Uh oh
     already_taken = "Already taken.",
 
-    job_doesnt_require_vote_currently = "This job does not require a vote at the moment!",
-
     x_made_you_a_y = "%s has made you a %s!",
 
     cmd_cant_be_run_server_console = "This command cannot be run from the server console.",
 
-
-    -- Animations
-    custom_animation = "Custom animation!",
-    bow = "Bow",
-    sexy_dance = "Sexy dance",
-    follow_me = "Follow me!",
-    laugh = "Laugh",
-    lion_pose = "Lion pose",
-    nonverbal_no = "Non-verbal no",
-    thumbs_up = "Thumbs up",
-    wave = "Wave",
-    dance = "Dance",
-
-    -- Hungermod
-    starving = "Starving!",
-
-    -- AFK
-    afk_mode = "AFK Mode",
-    unable_afk_spam_prevention = "Please wait before going AFK again.",
-    salary_frozen = "Your salary has been frozen.",
-    salary_restored = "Welcome back, your salary has now been restored.",
-    no_auto_demote = "You will not be auto-demoted.",
-    youre_afk_demoted = "You were demoted for being AFK for too long. Next time use /afk.",
-    hes_afk_demoted = "%s has been demoted for being AFK for too long.",
-    afk_cmd_to_exit = "Type /afk to exit AFK mode.",
-    player_now_afk = "%s is now AFK.",
-    player_no_longer_afk = "%s is no longer AFK.",
-
-    -- Hitmenu
-    hit = "hit",
-    hitman = "Hitman",
-    current_hit = "Hit: %s",
-    cannot_request_hit = "Cannot request hit! %s",
-    hitmenu_request = "Request",
-    player_not_hitman = "This player is not a hitman!",
     distance_too_big = "Distance too big.",
-    hitman_no_suicide = "The hitman won't kill themself.",
-    hitman_no_self_order = "A hitman cannot order a hit for themself.",
-    hitman_already_has_hit = "The hitman already has a hit ongoing.",
-    price_too_low = "Price too low!",
-    hit_target_recently_killed_by_hit = "The target was recently killed by a hit,",
-    customer_recently_bought_hit = "The customer has recently requested a hit.",
-    accept_hit_question = "Accept hit from %s\nregarding %s for %s%d?", -- backwards compatibility
-    accept_hit_request = "Accept hit from %s\nregarding %s for %s?",
-    hit_requested = "Hit requested!",
-    hit_aborted = "Hit aborted! %s",
-    hit_accepted = "Hit accepted!",
-    hit_declined = "The hitman declined the hit!",
-    hitman_left_server = "The hitman has left the server!",
-    customer_left_server = "The customer has left the server!",
-    target_left_server = "The target has left the server!",
-    hit_price_set_to_x = "Hit price set to %s%d.", -- backwards compatibility
-    hit_price_set = "Hit price set to %s.",
-    hit_complete = "Hit by %s complete!",
-    hitman_died = "The hitman died!",
-    target_died = "The target has died!",
-    hitman_arrested = "The hitman was arrested!",
-    hitman_changed_team = "The hitman changed team!",
-    x_had_hit_ordered_by_y = "%s had an active hit ordered by %s",
-    place_a_hit = "place a hit!",
-    hit_cancel = "hit cancellation!",
-    hit_cancelled = "The hit was cancelled!",
-    no_active_hit = "You have no active hit!",
-
-    -- Vote Restrictions
-    hobos_no_rights = "Hobos have no voting rights!",
-    gangsters_cant_vote_for_government = "Gangsters cannot vote for government things!",
-    government_cant_vote_for_gangsters = "Government officials cannot vote for gangster things!",
 
     -- VGUI and some more doors/vehicles
     vote = "Vote",
@@ -482,25 +409,15 @@ local my_language = {
     jobs = "Jobs",
     buy_x = "Buy %s",
 
-    -- F4menu
     ammo = "ammo",
     weapon_ = "weapon",
-    no_extra_weapons = "This job has no extra weapons.",
-    become_job = "Become job",
-    create_vote_for_job = "Create vote",
     shipment = "shipment",
-    Shipments = "Shipments",
     shipments = "shipments",
-    F4guns = "Weapons",
-    F4entities = "Miscellaneous",
-    F4ammo = "Ammo",
-    F4vehicles = "Vehicles",
 
     -- Tab 1
     give_money = "Give money to the player you're looking at",
     drop_money = "Drop money",
     change_name = "Change your DarkRP name",
-    go_to_sleep = "Go to sleep/wake up",
     drop_weapon = "Drop current weapon",
     buy_health = "Buy health(%s)",
     request_gunlicense = "Request gunlicense",

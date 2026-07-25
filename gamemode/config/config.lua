@@ -9,7 +9,6 @@ If this file is missing settings (because of e.g. an update), DarkRP will assume
 Don't worry about updating this file. If a new setting is added you can manually add them to this file.
 ---------------------------------------------------------------------------]]
 
-
 --[[
 Toggle settings.
 Set to true or false.
@@ -43,8 +42,6 @@ GM.Config.autovehiclelock               = false
 GM.Config.babygod                       = true
 -- canforcedooropen - whether players can force an unownable door open with lockpick or battering ram or w/e.
 GM.Config.canforcedooropen              = true
--- chatsounds - sounds are played when some things are said in chat.
-GM.Config.chatsounds                    = true
 -- chiefjailpos - Allow the Chief to set the jail positions.
 GM.Config.chiefjailpos                  = true
 -- cit_propertytax - Enable/disable property tax that is exclusive only for citizens.
@@ -69,8 +66,6 @@ GM.Config.showdeaths                    = true
 GM.Config.deadtalk                      = true
 -- deadvoice - Enable/disable whether people talk through the microphone while dead.
 GM.Config.deadvoice                     = true
--- deathpov - Enable/disable whether people see their death in first person view.
-GM.Config.deathpov                      = false
 -- decalcleaner - Enable/Disable clearing every player's decals.
 GM.Config.decalcleaner                  = false
 -- disallowClientsideScripts - Clientside scripts can be very useful for customizing the HUD or to aid in building. This option bans those scripts.
@@ -191,9 +186,6 @@ GM.Config.adminweapons                  = 1
 GM.Config.arrestspeed                   = 120
 -- babygodtime - How long the babygod lasts.
 GM.Config.babygodtime                   = 5
--- chatsoundsdelay - How long to wait before letting a player emit a sound from their chat again.
--- Leave this on at least a few seconds to prevent people from spamming sounds. Set to 0 to disable.
-GM.Config.chatsoundsdelay               = 5
 -- deathfee - the amount of money someone drops when dead.
 GM.Config.deathfee                      = 30
 -- decaltimer - Sets the time to clear clientside decals (in seconds).
@@ -324,16 +316,9 @@ GM.Config.moneyModel = "models/props/cs_assault/money.mdl"
 -- Note: Remember to include the folder where the sound file is located.
 GM.Config.lockdownsound = "npc/overwatch/cityvoice/f_confirmcivilstatus_1_spkr.wav"
 
--- The skin DarkRP uses. Set to "default" to use the GMod default derma theme.
-GM.Config.DarkRPSkin = "DarkRP"
 GM.Config.currency = "$"
 GM.Config.currencyThousandSeparator = ","
 GM.Config.chatCommandPrefix = "/"
-GM.Config.F1MenuHelpPage = "https://darkrp.miraheze.org/wiki/Main_Page"
-GM.Config.F1MenuHelpPageTitle = "DarkRP Wiki"
-
--- The sound that plays when you get a DarkRP notification
-GM.Config.notificationSound = "buttons/lightswitch2.wav"
 
 -- Put Steam ID's and ranks in this list, and the players will have that rank when they join.
 GM.Config.DefaultPlayerGroups = {
@@ -375,50 +360,17 @@ GM.Config.DefaultWeapons = {
     "weapon_physgun",
 }
 
--- Override categories.
--- NOTE: categories are to be set in the "category" field of the custom jobs/shipments/entities/ammo/pistols/vehicles.
--- Use this only to override the categories of _default_ things.
--- This will NOT work for your own custom stuff.
--- Make sure the category is created in the darkrp_customthings/categories.lua, otherwise it won't work!
+-- Surcharge de catégorie des objets PAR DÉFAUT. Ce fork n'en livre plus aucun, donc
+-- les tables sont vides — mais elles doivent exister : mergeCategories indexe
+-- GAMEMODE.Config.CategoryOverride[kind] sans garde
+-- (gamemode/modules/base/sh_createitems.lua). Nil ici = échec de chargement du gamemode.
 GM.Config.CategoryOverride = {
-    jobs = {
-        ["Citizen"]                             = "Citizens",
-        ["Hobo"]                                = "Citizens",
-        ["Gun Dealer"]                          = "Citizens",
-        ["Medic"]                               = "Citizens",
-        ["Civil Protection"]                    = "Civil Protection",
-        ["Gangster"]                            = "Gangsters",
-        ["Mob boss"]                            = "Gangsters",
-        ["Civil Protection Chief"]              = "Civil Protection",
-        ["Mayor"]                               = "Civil Protection",
-    },
-    entities = {
-        ["Drug lab"]                            = "Other",
-        ["Money printer"]                       = "Other",
-        ["Gun lab"]                             = "Other",
-
-    },
-    shipments = {
-        ["AK47"]                                = "Rifles",
-        ["MP5"]                                 = "Rifles",
-        ["M4"]                                  = "Rifles",
-        ["Mac 10"]                              = "Other",
-        ["Pump shotgun"]                        = "Shotguns",
-        ["Sniper rifle"]                        = "Snipers",
-
-    },
-    weapons = {
-        ["Desert eagle"]                        = "Pistols",
-        ["Fiveseven"]                           = "Pistols",
-        ["Glock"]                               = "Pistols",
-        ["P228"]                                = "Pistols",
-    },
-    vehicles = {}, -- There are no default vehicles.
-    ammo = {
-        ["Pistol ammo"]                         = "Other",
-        ["Shotgun ammo"]                        = "Other",
-        ["Rifle ammo"]                          = "Other",
-    },
+    jobs = {},
+    entities = {},
+    shipments = {},
+    weapons = {},
+    vehicles = {},
+    ammo = {},
 }
 
 -- The list of weapons admins spawn with, in addition to the default weapons, a job's weapons and GM.Config.AdminsCopWeapons.
@@ -488,49 +440,3 @@ GM.Config.allowedProperties = {
     skin = true,
     bodygroups = true,
 }
-
---[[---------------------------------------------------------------------------
-F4 menu
----------------------------------------------------------------------------]]
--- hide the items that you can't buy and the jobs you can't get (instead of graying them out).
--- this option hides items when you don't have enough money, when the maximum is reached for a job or any other reason.
-GM.Config.hideNonBuyable = false
-
--- Hide only the items that you have the wrong job for (or for which the customCheck says no).
--- When you set this option to true and hideNonBuyable to false, you WILL see e.g. items that are too expensive for you to buy.
--- but you won't see gundealer shipments when you have the citizen job.
-GM.Config.hideTeamUnbuyable = true
-
---[[---------------------------------------------------------------------------
-AFK module
----------------------------------------------------------------------------]]
--- The time of inactivity before being demoted.
-GM.Config.afkdemotetime = 600
--- Prevent people from spamming AFK.
-GM.Config.AFKDelay = 300
-
---[[---------------------------------------------------------------------------
-Hitmenu module
----------------------------------------------------------------------------]]
--- The minimum price for a hit.
-GM.Config.minHitPrice = 200
--- The maximum price for a hit.
-GM.Config.maxHitPrice = 50000
--- The minimum distance between a hitman and his customer when they make the deal.
-GM.Config.minHitDistance = 150
--- The text that tells the player he can press use on the hitman to request a hit.
-GM.Config.hudText = "I am a hitman.\nPress E on me to request a hit!"
--- The text above a hitman when he's got a hit.
-GM.Config.hitmanText = "Hit\naccepted!"
--- The cooldown time for a hit target (so they aren't spam killed).
-GM.Config.hitTargetCooldown = 120
--- How long a customer has to wait to be able to buy another hit (from the moment the hit is accepted).
-GM.Config.hitCustomerCooldown = 240
-
---[[---------------------------------------------------------------------------
-Hungermod module
----------------------------------------------------------------------------]]
--- hungerspeed <Amount> - Set the rate at which players will become hungry (2 is the default).
-GM.Config.hungerspeed = 2
--- starverate <Amount> - How much health that is taken away every second the player is starving  (3 is the default).
-GM.Config.starverate = 3
