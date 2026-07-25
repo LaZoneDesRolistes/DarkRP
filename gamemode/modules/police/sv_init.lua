@@ -1,5 +1,4 @@
 local plyMeta = FindMetaTable("Player")
-local finishWarrantRequest
 local arrestedPlayers = {}
 
 --[[---------------------------------------------------------------------------
@@ -39,11 +38,6 @@ function plyMeta:unWarrant(unwarranter)
     if suppressMsg then return end
 
     DarkRP.notify(unwarranter, 2, 4, DarkRP.getPhrase("warrant_expired", self:Nick()))
-end
-
-function plyMeta:requestWarrant(suspect, actor, reason)
-    local question = DarkRP.getPhrase("warrant_request", actor:Nick(), suspect:Nick(), reason)
-    DarkRP.createQuestion(question, suspect:EntIndex() .. "warrant", self, 40, finishWarrantRequest, actor, suspect, reason)
 end
 
 function plyMeta:wanted(actor, reason, time)
@@ -192,24 +186,10 @@ local function warrantCommand(ply, args)
         return ""
     end
 
-    local Team = ply:Team()
-    if not RPExtraTeams[Team] or not RPExtraTeams[Team].mayor then -- No need to search through all the teams if the player is a mayor
-        local mayors = {}
-
-        for k, v in pairs(RPExtraTeams) do
-            if v.mayor then
-                table.Add(mayors, team.GetPlayers(k))
-            end
-        end
-
-        if not table.IsEmpty(mayors) then -- Request a warrant if there's a mayor
-            local mayor = table.Random(mayors)
-            mayor:requestWarrant(target, ply, reason)
-            DarkRP.notify(ply, 0, 4, DarkRP.getPhrase("warrant_request2", mayor:Nick()))
-            return ""
-        end
-    end
-
+    -- Mayor approval used to gate this, through DarkRP.createQuestion. That function
+    -- went with the deleted voting module, so the approval branch could only raise and
+    -- no warrant was ever issued while a mayor was online. Warrants are now granted
+    -- directly, which is what already happened whenever no mayor was connected.
     target:warrant(ply, reason)
 
     return ""
@@ -320,16 +300,6 @@ DarkRP.definePrivilegedChatCommand("unarrest", "DarkRP_AdminCommands", ccUnarres
 --[[---------------------------------------------------------------------------
 Callback functions
 ---------------------------------------------------------------------------]]
-function finishWarrantRequest(choice, mayor, initiator, suspect, reason)
-    if not tobool(choice) then
-        DarkRP.notify(initiator, 1, 4, DarkRP.getPhrase("warrant_denied", mayor:Nick()))
-        return
-    end
-    if IsValid(suspect) then
-        suspect:warrant(initiator, reason)
-    end
-end
-
 --[[---------------------------------------------------------------------------
 Hooks
 ---------------------------------------------------------------------------]]
@@ -396,10 +366,6 @@ end
 
 function DarkRP.hooks:playerUnArrested(ply, actor, teleportOverride)
     if ply:InVehicle() then ply:ExitVehicle() end
-
-    if ply.Sleeping then
-        DarkRP.toggleSleep(ply, "force")
-    end
 
     if not ply:Alive() and not GAMEMODE.Config.respawninjail then
         ply.NextSpawnTime = CurTime()

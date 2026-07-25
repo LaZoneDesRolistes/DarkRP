@@ -859,14 +859,6 @@ function GM:PlayerSpawn(ply)
         end
     end
 
-    if ply.demotedWhileDead then
-        ply.demotedWhileDead = nil
-
-        local demoteTeam = hook.Call("demoteTeam", nil, ply) or GAMEMODE.DefaultTeam
-        ply:changeTeam(demoteTeam, true)
-        ply:setDarkRPVar("job", team.GetName(demoteTeam))
-    end
-
     local jobTable = ply:getJobTable()
 
     player_manager.SetPlayerClass(ply, jobTable.playerClass or "player_darkrp")

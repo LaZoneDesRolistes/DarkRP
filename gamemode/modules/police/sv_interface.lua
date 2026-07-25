@@ -40,34 +40,6 @@ DarkRP.unLockdown = DarkRP.stub{
     metatable = DarkRP
 }
 
-DarkRP.PLAYER.requestWarrant = DarkRP.stub{
-    name = "requestWarrant",
-    description = "File a request for a search warrant.",
-    parameters = {
-        {
-            name = "suspect",
-            description = "The player who is suspected.",
-            type = "Player",
-            optional = false
-        },
-        {
-            name = "actor",
-            description = "The player who wants the warrant.",
-            type = "Player",
-            optional = false
-        },
-        {
-            name = "reason",
-            description = "The reason for the warrant.",
-            type = "string",
-            optional = false
-        }
-    },
-    returns = {
-    },
-    metatable = DarkRP.PLAYER
-}
-
 DarkRP.PLAYER.warrant = DarkRP.stub{
     name = "warrant",
     description = "Get a search warrant for this person.",
