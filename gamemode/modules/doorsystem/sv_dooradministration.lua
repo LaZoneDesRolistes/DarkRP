@@ -15,7 +15,7 @@ local function ccDoorUnOwn(ply, args)
     ent:Fire("unlock", "", 0)
     ent:keysUnOwn()
     DarkRP.log(ply:Nick() .. " (" .. ply:SteamID() .. ") force-unowned a door with forceunown", Color(30, 30, 30))
-    DarkRP.notify(ply, 0, 4, "Forcefully unowned")
+    DarkRP.notify(ply, 0, 4, "Propriété retirée d'autorité")
 end
 DarkRP.definePrivilegedChatCommand("forceunown", "DarkRP_SetDoorOwner", ccDoorUnOwn)
 
@@ -34,7 +34,7 @@ local function unownAll(ply, args)
         DarkRP.log(ply:Nick() .. " (" .. ply:SteamID() .. ") force-unowned all doors owned by " .. target:Nick(), Color(30, 30, 30))
     end
 
-    DarkRP.notify(ply, 0, 4, "All doors of " .. target:Nick() .. " are now unowned")
+    DarkRP.notify(ply, 0, 4, "Toutes les portes de " .. target:Nick() .. " ont été libérées")
 end
 DarkRP.definePrivilegedChatCommand("forceunownall", "DarkRP_SetDoorOwner", unownAll)
 
@@ -70,7 +70,7 @@ local function ccAddOwner(ply, args)
     ent:keysOwn(target)
 
     DarkRP.log(ply:Nick() .. " (" .. ply:SteamID() .. ") force-added a door owner with forceown", Color(30, 30, 30))
-    DarkRP.notify(ply, 0, 4, "Forcefully added " .. target:Nick())
+    DarkRP.notify(ply, 0, 4, "Ajouté d'autorité : " .. target:Nick())
 end
 DarkRP.definePrivilegedChatCommand("forceown", "DarkRP_SetDoorOwner", ccAddOwner)
 
@@ -106,7 +106,7 @@ local function ccRemoveOwner(ply, args)
     end
 
     DarkRP.log(ply:Nick() .. " (" .. ply:SteamID() .. ") force-removed a door owner with forceremoveowner", Color(30, 30, 30))
-    DarkRP.notify(ply, 0, 4, "Forcefully removed " .. target:Nick())
+    DarkRP.notify(ply, 0, 4, "Retiré d'autorité : " .. target:Nick())
 end
 DarkRP.definePrivilegedChatCommand("forceremoveowner", "DarkRP_SetDoorOwner", ccRemoveOwner)
 
@@ -137,7 +137,7 @@ local function ccLock(ply, args)
         ))
 
     DarkRP.log(ply:Nick() .. " (" .. ply:SteamID() .. ") force-locked a door with forcelock (locked door is saved)", Color(30, 30, 30))
-    DarkRP.notify(ply, 0, 4, "Forcefully locked")
+    DarkRP.notify(ply, 0, 4, "Verrouillé d'autorité")
 end
 DarkRP.definePrivilegedChatCommand("forcelock", "DarkRP_ChangeDoorSettings", ccLock)
 
@@ -167,6 +167,6 @@ local function ccUnLock(ply, args)
         ))
 
     DarkRP.log(ply:Nick() .. " (" .. ply:SteamID() .. ") force-unlocked a door with forcelock (unlocked door is saved)", Color(30, 30, 30))
-    DarkRP.notify(ply, 0, 4, "Forcefully unlocked")
+    DarkRP.notify(ply, 0, 4, "Déverrouillé d'autorité")
 end
 DarkRP.definePrivilegedChatCommand("forceunlock", "DarkRP_ChangeDoorSettings", ccUnLock)

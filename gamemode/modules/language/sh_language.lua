@@ -1,5 +1,6 @@
 --[[---------------------------------------------------------------------------
-Ce serveur n'a qu'une langue : l'anglais (sh_english.lua).
+Ce serveur n'a qu'une langue : le français (sh_french.lua). Le serveur est
+francophone ; le fichier anglais d'origine a été traduit puis retiré le 25/07/2026.
 
 La machinerie multilingue de DarkRP a été retirée le 25/07/2026 -- sélection par la
 convar gmod_language, phrases localisées par joueur, traduction des descriptions de
@@ -35,8 +36,12 @@ function DarkRP.addPhrase(lang, name, phrase)
     rp_languages[lang][name] = phrase
 end
 
+-- Langue active. Une seule est chargée ; cette constante est le seul endroit à
+-- changer si le serveur devait basculer.
+local ACTIVE = "fr"
+
 function DarkRP.getPhrase(name, ...)
-    local phrase = rp_languages.en[name]
+    local phrase = rp_languages[ACTIVE][name]
 
     return phrase and string.format(phrase, ...) or nil
 end

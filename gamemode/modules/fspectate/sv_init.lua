@@ -57,45 +57,26 @@ local function startSpectating(ply, target)
         end
     net.Send(ply)
 
-    local targetText = IsValid(target) and target:IsPlayer() and (target:Nick() .. " (" .. target:SteamID() .. ")") or IsValid(target) and "an entity" or ""
-    ply:ChatPrint("You are now spectating " .. targetText)
+    local targetText = IsValid(target) and target:IsPlayer() and (target:Nick() .. " (" .. target:SteamID() .. ")") or IsValid(target) and "une entité" or ""
+    ply:ChatPrint("Vous observez désormais " .. targetText)
     hook.Call("FSpectate_start", nil, ply, target)
 end
 
 local function Spectate(ply, cmd, args)
     CAMI.PlayerHasAccess(ply, "FSpectate", function(b, _)
-        if not b then ply:ChatPrint("No Access!") return end
+        if not b then ply:ChatPrint("Accès refusé !") return end
 
         local target = findPlayer(args[1])
-        if target == ply then ply:ChatPrint("Invalid target!") return end
+        if target == ply then ply:ChatPrint("Cible invalide !") return end
 
         startSpectating(ply, target)
     end)
 end
 concommand.Add("FSpectate", Spectate)
 
--- Seule entrée utilisateur du module depuis que son UI vivait dans FAdmin, retiré de
--- ce fork. Réutilise le privilège CAMI déjà déclaré par sh_init.lua ; c'est SAM qui
--- l'accorde. Pas de Derma : rien de neuf n'est ajouté au gamemode.
-DarkRP.definePrivilegedChatCommand("spectate", "FSpectate", function(ply, args)
-    local target = findPlayer(args)
-    if not IsValid(target) then
-        DarkRP.notify(ply, 1, 4, DarkRP.getPhrase("could_not_find", tostring(args)))
-        return ""
-    end
-    if target == ply then
-        DarkRP.notify(ply, 1, 4, DarkRP.getPhrase("unable", "/spectate", ""))
-        return ""
-    end
-
-    startSpectating(ply, target)
-
-    return ""
-end)
-
 net.Receive("FSpectateTarget", function(_, ply)
     CAMI.PlayerHasAccess(ply, "FSpectate", function(b, _)
-        if not b then ply:ChatPrint("No Access!") return end
+        if not b then ply:ChatPrint("Accès refusé !") return end
 
         startSpectating(ply, net.ReadEntity())
     end)
@@ -103,7 +84,7 @@ end)
 
 local function TPToPos(ply, cmd, args)
     CAMI.PlayerHasAccess(ply, "FSpectateTeleport", function(b, _)
-        if not b then ply:ChatPrint("No Access!") return end
+        if not b then ply:ChatPrint("Accès refusé !") return end
 
         local x, y, z = string.match(args[1] or "", "([-0-9\\.]+),%s?([-0-9\\.]+),%s?([-0-9\\.]+)")
         local vx, vy, vz = string.match(args[2] or "", "([-0-9\\.]+),%s?([-0-9\\.]+),%s?([-0-9\\.]+)")

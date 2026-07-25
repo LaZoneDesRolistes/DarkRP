@@ -298,10 +298,10 @@ local uiForeground, uiBackground = Color(240, 240, 255, 255), Color(20, 20, 20, 
 local red = Color(255, 0, 0, 255)
 local function drawHelp()
     local scrHalfH = math.floor(ScrH() / 2)
-    draw.WordBox(2, 10, scrHalfH, "Left click: (Un)select player to spectate", "UiBold", uiBackground, uiForeground)
-    draw.WordBox(2, 10, scrHalfH + 20, isRoaming and "Right click: quickly move forwards" or "Right click: toggle thirdperson", "UiBold", uiBackground, uiForeground)
-    draw.WordBox(2, 10, scrHalfH + 40, "Jump: Stop spectating", "UiBold", uiBackground, uiForeground)
-    draw.WordBox(2, 10, scrHalfH + 60, "Reload: Stop spectating and teleport", "UiBold", uiBackground, uiForeground)
+    draw.WordBox(2, 10, scrHalfH, "Clic gauche : (dé)sélectionner un joueur à observer", "UiBold", uiBackground, uiForeground)
+    draw.WordBox(2, 10, scrHalfH + 20, isRoaming and "Clic droit : avancer rapidement" or "Clic droit : basculer en vue à la troisième personne", "UiBold", uiBackground, uiForeground)
+    draw.WordBox(2, 10, scrHalfH + 40, "Saut : arrêter d'observer", "UiBold", uiBackground, uiForeground)
+    draw.WordBox(2, 10, scrHalfH + 60, "Recharger : arrêter d'observer et se téléporter", "UiBold", uiBackground, uiForeground)
 
 
     local target = findNearestObject()
@@ -318,7 +318,7 @@ local function drawHelp()
 
         draw.RoundedBox(2, x, y - 6, 12, 12, team.GetColor(ply:Team()))
         draw.WordBox(2, x, y - 66, ply:Nick(), "UiBold", uiBackground, uiForeground)
-        draw.WordBox(2, x, y - 46, "Health: " .. ply:Health(), "UiBold", uiBackground, uiForeground)
+        draw.WordBox(2, x, y - 46, "Santé : " .. ply:Health(), "UiBold", uiBackground, uiForeground)
         draw.WordBox(2, x, y - 26, ply:GetUserGroup(), "UiBold", uiBackground, uiForeground)
     end
 
@@ -333,7 +333,7 @@ local function drawHelp()
     local bottomLeft = (center - rightUp):ToScreen()
 
     draw.RoundedBox(12, bottomLeft.x, bottomLeft.y, math.max(20, topRight.x - bottomLeft.x), topRight.y - bottomLeft.y, red)
-    draw.WordBox(2, bottomLeft.x, bottomLeft.y + 12, "Left click to spectate!", "UiBold", uiBackground, uiForeground)
+    draw.WordBox(2, bottomLeft.x, bottomLeft.y + 12, "Clic gauche pour observer !", "UiBold", uiBackground, uiForeground)
 end
 
 /*---------------------------------------------------------------------------

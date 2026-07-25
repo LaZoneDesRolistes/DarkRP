@@ -93,6 +93,6 @@ local function removeLetters(ply, args)
         DarkRP.log(ply:Nick() .. " (" .. ply:SteamID() .. ") force-removed all letters", Color(30, 30, 30))
     end
 
-    DarkRP.notify(ply, 0, 4, "All letters removed")
+    DarkRP.notify(ply, 0, 4, "Toutes les lettres ont été retirées")
 end
 DarkRP.definePrivilegedChatCommand("removeletters", "DarkRP_AdminCommands", removeLetters)
