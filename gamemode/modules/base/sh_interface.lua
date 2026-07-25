@@ -176,7 +176,6 @@ DarkRP.explodeArg = DarkRP.stub{
     metatable = DarkRP
 }
 
-
 DarkRP.formatMoney = DarkRP.stub{
     name = "formatMoney",
     description = "Format a number as a money value. Includes currency symbol.",
@@ -1123,10 +1122,6 @@ DarkRP.hookStub{
     returns = {
     }
 }
-
-
-
-
 
 DarkRP.hookStub{
     name = "canBuyCustomEntity",

@@ -10,14 +10,6 @@ function GM:Initialize()
     self.Sandbox.Initialize(self)
 end
 
-function GM:getDoorCost(ply, ent)
-    return GAMEMODE.Config.doorcost ~= 0 and GAMEMODE.Config.doorcost or 30
-end
-
-function GM:getVehicleCost(ply, ent)
-    return GAMEMODE.Config.vehiclecost ~= 0 and GAMEMODE.Config.vehiclecost or 40
-end
-
 local disallowedNames = {["ooc"] = true, ["shared"] = true, ["world"] = true, ["world prop"] = true}
 function GM:CanChangeRPName(ply, RPname)
     if disallowedNames[string.lower(RPname)] then return false, DarkRP.getPhrase("forbidden_name") end
@@ -26,14 +18,6 @@ function GM:CanChangeRPName(ply, RPname)
     local len = string.len(RPname)
     if len > 30 then return false, DarkRP.getPhrase("too_long") end
     if len < 3 then return false,  DarkRP.getPhrase("too_short") end
-end
-
-function GM:canDemote(ply, target, reason)
-
-end
-
-function GM:canVote(ply, vote)
-
 end
 
 function GM:playerWalletChanged(ply, amount)
@@ -45,14 +29,6 @@ function GM:playerGetSalary(ply, amount)
 end
 
 function GM:DarkRPVarChanged(ply, var, oldvar, newvalue)
-
-end
-
-function GM:playerBoughtVehicle(ply, ent, cost)
-
-end
-
-function GM:playerBoughtDoor(ply, ent, cost)
 
 end
 

@@ -894,37 +894,6 @@ DarkRP.hookStub{
     }
 }
 
-
-
-DarkRP.hookStub{
-    name = "playerBoughtCustomVehicle",
-    description = "Called when a player bought a vehicle.",
-    parameters = {
-        {
-            name = "ply",
-            description = "The player.",
-            type = "Player"
-        },
-        {
-            name = "vehicleTable",
-            description = "The table (from the CustomVehicles table).",
-            type = "table"
-        },
-        {
-            name = "ent",
-            description = "The spawned vehicle.",
-            type = "Entity"
-        },
-        {
-            name = "price",
-            description = "The eventual price.",
-            type = "number"
-        }
-    },
-    returns = {
-    }
-}
-
 DarkRP.hookStub{
     name = "playerBoughtCustomEntity",
     description = "Called when a player bought an entity (like a money printer or a gun lab).",
@@ -948,84 +917,6 @@ DarkRP.hookStub{
             name = "price",
             description = "The eventual price.",
             type = "number"
-        }
-    },
-    returns = {
-    }
-}
-
-
-DarkRP.hookStub{
-    name = "canDemote",
-    description = "Whether a player can demote another player.",
-    parameters = {
-        {
-            name = "ply",
-            description = "The player who wants to demote.",
-            type = "Player"
-        },
-        {
-            name = "target",
-            description = "The player whom is to be demoted.",
-            type = "Player"
-        },
-        {
-            name = "reason",
-            description = "The reason provided for the demote.",
-            type = "string"
-        }
-    },
-    returns = {
-        {
-            name = "canDemote",
-            description = "Whether the player can change demote the target.",
-            type = "boolean"
-        },
-        {
-            name = "message",
-            description = "The message to show when the player cannot demote the other player. Only useful when canDemote is false.",
-            type = "string"
-        }
-    }
-}
-
-DarkRP.hookStub{
-    name = "demoteTeam",
-    description = "The team the player is to be demoted to instead of the default team.",
-    parameters = {
-        {
-            name = "target",
-            description = "The player whom is to be demoted.",
-            type = "Player"
-        },
-    },
-    returns = {
-        {
-            name = "demoteTeam",
-            description = "The team the player is to be demoted to.",
-            type = "number"
-        },
-    }
-}
-
-DarkRP.hookStub{
-    name = "onPlayerDemoted",
-    description = "Called when a player is demoted.",
-    parameters = {
-        {
-            name = "source",
-            description = "The player who demoted the target.",
-            type = "Player"
-        },
-        {
-            name = "target",
-            description = "The player who has been demoted.",
-            type = "Player"
-        },
-        {
-            name = "reason",
-            description = "The reason provided for the demote.",
-            type = "string"
         }
     },
     returns = {
@@ -1081,35 +972,6 @@ DarkRP.hookStub{
             name = "canHear",
             description = "Whether the player can see the log message.",
             type = "boolean"
-        }
-    }
-}
-
-DarkRP.hookStub{
-    name = "canVote",
-    description = "Whether a player can cast a vote.",
-    parameters = {
-        {
-            name = "ply",
-            description = "The player.",
-            type = "Player"
-        },
-        {
-            name = "vote",
-            description = "Table containing all information about the vote.",
-            type = "table"
-        }
-    },
-    returns = {
-        {
-            name = "canVote",
-            description = "Whether the player can vote.",
-            type = "boolean"
-        },
-        {
-            name = "message",
-            description = "The message to show when the player cannot vote. Only useful when canVote is false.",
-            type = "string"
         }
     }
 }
@@ -1190,7 +1052,6 @@ DarkRP.hookStub{
     returns = {}
 }
 
-
 DarkRP.hookStub{
     name = "canEarnNPCKillPay",
     description = "If a player should profit from killing a NPC",
@@ -1214,7 +1075,6 @@ DarkRP.hookStub{
         }
     }
 }
-
 
 DarkRP.hookStub{
     name = "calculateNPCKillPay",
