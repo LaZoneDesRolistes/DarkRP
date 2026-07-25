@@ -30,7 +30,6 @@ function meta:changeTeam(t, force, suppressNotification, ignoreMaxMembers)
         self:teamBan()
         self.IsBeingDemoted = false
         self:changeTeam(GAMEMODE.DefaultTeam, true)
-        DarkRP.destroyVotesWithEnt(self)
         notify(self, 1, 4, DarkRP.getPhrase("tried_to_avoid_demotion"))
 
         return false
@@ -131,10 +130,6 @@ function meta:changeTeam(t, force, suppressNotification, ignoreMaxMembers)
             end
         end
         self.lawboards = {}
-    end
-
-    if isMayor and GAMEMODE.Config.shouldResetLaws then
-        DarkRP.resetLaws()
     end
 
     local DoEffect = false

@@ -1006,15 +1006,8 @@ function GM:PlayerDisconnected(ply)
     local remList = collectRemoveEntities(ply)
     removeDelayed(remList, ply)
 
-    DarkRP.destroyQuestionsWithEnt(ply)
-    DarkRP.destroyVotesWithEnt(ply)
-
     if isMayor and GetGlobalBool("DarkRP_LockDown") then -- Stop the lockdown
         DarkRP.unLockdown(ply)
-    end
-
-    if isMayor and GAMEMODE.Config.shouldResetLaws then
-        DarkRP.resetLaws()
     end
 
     if IsValid(ply.SleepRagdoll) then
