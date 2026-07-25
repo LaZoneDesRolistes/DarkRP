@@ -658,7 +658,6 @@ local function initPlayer(ply)
 
     ply:initiateTax()
 
-    ply:updateJob(team.GetName(GAMEMODE.DefaultTeam))
     ply:setSelfDarkRPVar("salary", DarkRP.retrieveSalary(ply))
     ply.LastJob = nil -- so players don't have to wait to get a job after joining
 
@@ -670,13 +669,6 @@ local function initPlayer(ply)
     ply:SetTeam(GAMEMODE.DefaultTeam)
     ply.DarkRPInitialised = true
 
-    -- Whether or not a player is being prevented from joining
-    -- a specific team for a certain length of time
-    if GAMEMODE.Config.restrictallteams then
-        for i = 1, #RPExtraTeams do
-            ply:teamBan(i, 0)
-        end
-    end
 end
 
 local function restoreReconnectedEnts(ply)
@@ -741,18 +733,9 @@ function GM:PlayerSelectSpawn(ply)
         POS = ply:GetPos()
     end
 
-    local CustomSpawnPos = DarkRP.retrieveTeamSpawnPos(ply:Team())
-    if GAMEMODE.Config.customspawns and not ply:isArrested() and CustomSpawnPos and next(CustomSpawnPos) ~= nil then
-        POS = CustomSpawnPos[math.random(1, #CustomSpawnPos)]
-    end
-
     -- Spawn where died in certain cases
     if GAMEMODE.Config.strictsuicide and ply.DeathPos then
         POS = ply.DeathPos
-    end
-
-    if ply:isArrested() then
-        POS = DarkRP.retrieveJailPos() or ply.DeathPos -- If we can't find a jail pos then we'll use where they died as a last resort
     end
 
     -- Make sure the player doesn't get stuck in something
