@@ -985,14 +985,8 @@ function GM:PlayerDisconnected(ply)
     timer.Remove(ply:SteamID64() .. "jobtimer")
     timer.Remove(ply:SteamID64() .. "propertytax")
 
-    local isMayor = ply:isMayor()
-
     local remList = collectRemoveEntities(ply)
     removeDelayed(remList, ply)
-
-    if isMayor and GetGlobalBool("DarkRP_LockDown") then -- Stop the lockdown
-        DarkRP.unLockdown(ply)
-    end
 
     if IsValid(ply.SleepRagdoll) then
         ply.SleepRagdoll:Remove()
