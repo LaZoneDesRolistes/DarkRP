@@ -252,10 +252,11 @@ end
 --[[---------------------------------------------------------------------------
 Whether a player has a DarkRP privilege
 ---------------------------------------------------------------------------]]
+-- Déléguait à FAdmin quand il était présent ; FAdmin a été retiré de ce fork, la
+-- branche était donc morte. Non rebranché sur CAMI à dessein : CAMI.PlayerHasAccess
+-- est asynchrone (callback), alors que cette fonction rend une valeur. La convertir
+-- changerait son contrat en silence pour tout appelant. C'est SAM qui fixe IsAdmin.
 function meta:hasDarkRPPrivilege(priv)
-    if FAdmin then
-        return FAdmin.Access.PlayerHasPrivilege(self, priv)
-    end
     return self:IsAdmin()
 end
 

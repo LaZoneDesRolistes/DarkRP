@@ -155,7 +155,10 @@ function SWEP:DoAttack(dmg)
         Owner:EmitSound(self.FleshHit[math.random(#self.FleshHit)])
     else
         Owner:EmitSound(self.Hit[math.random(#self.Hit)])
-        if FPP and FPP.plyCanTouchEnt(Owner, ent, "EntityDamage") then
+        -- FPP a été retiré de ce fork : la garde `if FPP and ...` était donc
+        -- constamment fausse et la prime de saisie inatteignable. CPPICanTool est
+        -- l'équivalent portable (stub permissif ici, réel dès que gProtect est monté).
+        if ent:CPPICanTool(Owner, "remover") then
             if ent.SeizeReward and not ent.beenSeized and not ent.burningup and Owner:isCP() and ent.Getowning_ent and Owner ~= ent:Getowning_ent() then
                 local amount = isfunction(ent.SeizeReward) and ent:SeizeReward(Owner, dmg) or ent.SeizeReward
 

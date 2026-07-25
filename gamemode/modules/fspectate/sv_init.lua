@@ -74,6 +74,25 @@ local function Spectate(ply, cmd, args)
 end
 concommand.Add("FSpectate", Spectate)
 
+-- Seule entrée utilisateur du module depuis que son UI vivait dans FAdmin, retiré de
+-- ce fork. Réutilise le privilège CAMI déjà déclaré par sh_init.lua ; c'est SAM qui
+-- l'accorde. Pas de Derma : rien de neuf n'est ajouté au gamemode.
+DarkRP.definePrivilegedChatCommand("spectate", "FSpectate", function(ply, args)
+    local target = findPlayer(args)
+    if not IsValid(target) then
+        DarkRP.notify(ply, 1, 4, DarkRP.getPhrase("could_not_find", tostring(args)))
+        return ""
+    end
+    if target == ply then
+        DarkRP.notify(ply, 1, 4, DarkRP.getPhrase("unable", "/spectate", ""))
+        return ""
+    end
+
+    startSpectating(ply, target)
+
+    return ""
+end)
+
 net.Receive("FSpectateTarget", function(_, ply)
     CAMI.PlayerHasAccess(ply, "FSpectate", function(b, _)
         if not b then ply:ChatPrint("No Access!") return end
