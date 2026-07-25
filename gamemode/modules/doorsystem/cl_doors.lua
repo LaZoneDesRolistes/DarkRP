@@ -9,10 +9,30 @@ local function updatePrivs()
         changeDoorAccess = b
     end)
 end
--- Timer due to lack of "on privilege changed" hook
+--[[
+    Réactif plutôt que par sondage. Le commentaire d'origine disait « timer faute de
+    hook de changement de privilège » : ce hook existe, CAMI l'émet lui-même
+    (gamemode/libraries/sh_cami.lua) et SAM le relaie.
+
+    Le timer d'une seconde qui tournait à vie est remplacé par un écouteur sur les
+    trois signaux qui peuvent changer la réponse, plus un filet à 30 s au cas où un
+    admin mod modifierait un rang sans passer par CAMI.
+]]
 hook.Add("InitPostEntity", "Load door privileges", function()
     updatePrivs()
-    timer.Create("Door changeDoorAccess checker", 1, 0, updatePrivs)
+    timer.Create("Door changeDoorAccess checker", 30, 0, updatePrivs)
+end)
+
+hook.Add("CAMI.PlayerUsergroupChanged", "Load door privileges", function(ply)
+    if ply == LocalPlayer() then updatePrivs() end
+end)
+
+hook.Add("CAMI.SteamIDUsergroupChanged", "Load door privileges", function(steamId)
+    if steamId == LocalPlayer():SteamID() then updatePrivs() end
+end)
+
+hook.Add("CAMI.OnPrivilegeRegistered", "Load door privileges", function(privilege)
+    if privilege.Name == "DarkRP_ChangeDoorSettings" then updatePrivs() end
 end)
 
 function meta:drawOwnableInfo()
