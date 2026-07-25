@@ -966,7 +966,6 @@ end
 function GM:PlayerDisconnected(ply)
     self.Sandbox.PlayerDisconnected(self, ply)
     timer.Remove(ply:SteamID64() .. "jobtimer")
-    timer.Remove(ply:SteamID64() .. "propertytax")
 
     local remList = collectRemoveEntities(ply)
     removeDelayed(remList, ply)

@@ -42,8 +42,6 @@ GM.Config.babygod                       = true
 GM.Config.canforcedooropen              = true
 -- chiefjailpos - Allow the Chief to set the jail positions.
 GM.Config.chiefjailpos                  = true
--- cit_propertytax - Enable/disable property tax that is exclusive only for citizens.
-GM.Config.cit_propertytax               = false
 -- copscanunfreeze - Enable/disable the ability of cops to unfreeze other people's props.
 GM.Config.copscanunfreeze               = true
 -- copscanunweld - Enable/disable the ability of cops to unweld other people's props.
@@ -116,8 +114,6 @@ GM.Config.instantjob                    = false
 GM.Config.npcarrest                     = true
 -- ooc - Whether or not OOC tags are enabled.
 GM.Config.ooc                           = true
--- propertytax - Enable/disable property tax.
-GM.Config.propertytax                   = false
 -- proppaying - Whether or not players should pay for spawning props.
 GM.Config.proppaying                    = false
 -- propspawning - Enable/disable props spawning. Applies to admins too.

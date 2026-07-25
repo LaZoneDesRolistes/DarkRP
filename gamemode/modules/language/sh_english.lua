@@ -58,8 +58,6 @@ local my_language = {
     payday_unemployed = "You received no salary because you are unemployed!",
     payday_missed = "Pay day missed! (You're Arrested)",
 
-    property_tax = "Property tax! %s",
-    property_tax_cant_afford = "You couldn't pay the taxes! Your property has been taken away from you!",
     taxday = "Tax Day! %s%% of your income was taken!",
 
     found_cheque = "You have found %s%s in a cheque made out to you from %s.",
