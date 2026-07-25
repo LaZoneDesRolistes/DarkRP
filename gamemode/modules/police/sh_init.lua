@@ -132,13 +132,6 @@ DarkRP.declareChatCommand{
 }
 
 DarkRP.declareChatCommand{
-    command = "lottery",
-    description = "Start a lottery.",
-    delay = 1.5,
-    condition = plyMeta.isMayor
-}
-
-DarkRP.declareChatCommand{
     command = "lockdown",
     description = "Start a lockdown. Everyone will have to stay inside.",
     delay = 1.5,
