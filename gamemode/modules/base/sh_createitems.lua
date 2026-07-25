@@ -1,102 +1,5 @@
 local plyMeta = FindMetaTable("Player")
 
------------------------------------------------------------
--- Job commands --
------------------------------------------------------------
-local function declareTeamCommands(CTeam)
-    local k = 0
-    for num, v in pairs(RPExtraTeams) do
-        if v.command == CTeam.command then
-            k = num
-        end
-    end
-
-    local chatcommandCondition = function(ply)
-        local plyTeam = ply:Team()
-
-        if plyTeam == k then return false end
-        if CTeam.admin == 1 and not ply:IsAdmin() or CTeam.admin == 2 and not ply:IsSuperAdmin() then return false end
-        if isnumber(CTeam.NeedToChangeFrom) and plyTeam ~= CTeam.NeedToChangeFrom then return false end
-        if istable(CTeam.NeedToChangeFrom) and not table.HasValue(CTeam.NeedToChangeFrom, plyTeam) then return false end
-        if CTeam.customCheck and CTeam.customCheck(ply) == false then return false end
-        if ply:isArrested() then return false end
-        local numPlayers = team.NumPlayers(k)
-        if CTeam.max ~= 0 and ((CTeam.max % 1 == 0 and numPlayers >= CTeam.max) or (CTeam.max % 1 ~= 0 and (numPlayers + 1) / player.GetCount() > CTeam.max)) then return false end
-        if ply.LastJob and 10 - (CurTime() - ply.LastJob) >= 0 then return false end
-
-        return true
-    end
-
-    DarkRP.declareChatCommand{
-        command = CTeam.command,
-        description = "Become " .. CTeam.name .. ".",
-        delay = 1.5,
-        condition = chatcommandCondition
-    }
-end
-
-local function addTeamCommands(CTeam, max)
-    if CLIENT then return end
-
-    local k = 0
-    for num, v in pairs(RPExtraTeams) do
-        if v.command == CTeam.command then
-            k = num
-        end
-    end
-
-    DarkRP.defineChatCommand(CTeam.command, function(ply)
-        if CTeam.admin == 1 and not ply:IsAdmin() then
-            DarkRP.notify(ply, 1, 4, DarkRP.getPhrase("need_admin", "/" .. CTeam.command))
-
-            return ""
-        end
-
-        if CTeam.admin > 1 and not ply:IsSuperAdmin() then
-            DarkRP.notify(ply, 1, 4, DarkRP.getPhrase("need_sadmin", "/" .. CTeam.command))
-
-            return ""
-        end
-
-        ply:changeTeam(k)
-
-        return ""
-    end)
-
-    concommand.Add("rp_" .. CTeam.command, function(ply, cmd, args)
-        if ply:EntIndex() ~= 0 and not ply:IsAdmin() then
-            ply:PrintMessage(HUD_PRINTCONSOLE, DarkRP.getPhrase("need_admin", cmd))
-            return
-        end
-
-        if CTeam.admin > 1 and not ply:IsSuperAdmin() and ply:EntIndex() ~= 0 then
-            ply:PrintMessage(HUD_PRINTCONSOLE, DarkRP.getPhrase("need_sadmin", cmd))
-            return
-        end
-
-        if not args or not args[1] then
-            DarkRP.printConsoleMessage(ply, DarkRP.getPhrase("invalid_x", DarkRP.getPhrase("arguments"), ""))
-            return
-        end
-
-        local target = DarkRP.findPlayer(args[1])
-
-        if not target then
-            DarkRP.printConsoleMessage(ply, DarkRP.getPhrase("could_not_find", tostring(args[1])))
-            return
-        end
-
-        target:changeTeam(k, true)
-        local nick
-        if (ply:EntIndex() ~= 0) then
-            nick = ply:Nick()
-        else
-            nick = "Console"
-        end
-        DarkRP.notify(target, 0, 4, DarkRP.getPhrase("x_made_you_a_y", nick, CTeam.name))
-    end)
-end
-
 local function addEntityCommands(tblEnt)
     DarkRP.declareChatCommand{
         command = tblEnt.cmd,
@@ -275,11 +178,6 @@ function DarkRP.createJob(Name, colorOrTable, model, Description, Weapons, comma
     DarkRP.addToCategory(CustomTeam, "jobs", CustomTeam.category)
 
     team.SetUp(jobCount, Name, CustomTeam.color)
-
-    timer.Simple(0, function()
-        declareTeamCommands(CustomTeam)
-        addTeamCommands(CustomTeam, CustomTeam.max)
-    end)
 
     -- Precache model here. Not right before the job change is done
     if istable(CustomTeam.model) then
