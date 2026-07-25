@@ -23,7 +23,6 @@
     "lint_spaceAfterBrackets": true,
     "lint_spaceAfterBraces": true,
     "lint_ignoreFiles": [
-        "./gamemode/modules/fpp/pp/**.lua",
         "./gamemode/libraries/simplerr.lua",
         "./gamemode/libraries/fn.lua"
     ],

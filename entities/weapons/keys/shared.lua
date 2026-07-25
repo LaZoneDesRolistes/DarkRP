@@ -78,21 +78,11 @@ local function lockUnlockAnimation(ply, snd)
     ply:EmitSound("npc/metropolice/gear" .. math.random(1, 6) .. ".wav")
     timer.Simple(0.9, function() if IsValid(ply) then ply:EmitSound(snd) end end)
 
-    umsg.Start("anim_keys")
-        umsg.Entity(ply)
-        umsg.String("usekeys")
-    umsg.End()
-
     ply:AnimRestartGesture(GESTURE_SLOT_ATTACK_AND_RELOAD, ACT_GMOD_GESTURE_ITEM_PLACE, true)
 end
 
 local function doKnock(ply, sound)
     ply:EmitSound(sound, 100, math.random(90, 110))
-
-    umsg.Start("anim_keys")
-        umsg.Entity(ply)
-        umsg.String("knocking")
-    umsg.End()
 
     ply:AnimRestartGesture(GESTURE_SLOT_ATTACK_AND_RELOAD, ACT_HL2MP_GESTURE_RANGE_ATTACK_FIST, true)
 end
