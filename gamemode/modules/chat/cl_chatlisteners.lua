@@ -74,8 +74,29 @@ end
 --[[---------------------------------------------------------------------------
 Find out who could hear the player if they were to speak now
 ---------------------------------------------------------------------------]]
+--[[
+    Tourne dans Think, donc à chaque frame tant que le chat est ouvert : sans
+    limitation c'est un player.GetAll() complet plus un hook.Run par joueur et par
+    frame -- de l'ordre de 4 600 hook.Run/s à 32 joueurs et 144 fps, pour une liste
+    qui ne change pas 144 fois par seconde.
+
+    On recalcule donc au plus 10 fois par seconde, MAIS immédiatement dès que ce
+    dont le résultat dépend a changé : le texte tapé ou la configuration de portée.
+    La réactivité perçue est identique, le coût à vide est divisé par ~14.
+]]
+local RECIPIENTS_INTERVAL = 0.1
+local lastRun, lastText, lastConfig = 0, nil, nil
+
 local function chatGetRecipients()
     if not currentConfig then return end
+
+    local now = CurTime()
+    if currentChatText == lastText
+    and currentConfig == lastConfig
+    and now - lastRun < RECIPIENTS_INTERVAL then
+        return
+    end
+    lastRun, lastText, lastConfig = now, currentChatText, currentConfig
 
     receivers = {}
     for _, ply in ipairs(player.GetAll()) do
@@ -102,6 +123,7 @@ local function startFind()
     if shouldDraw == false then return end
 
     currentConfig = receiverConfigs[""]
+    lastRun, lastText, lastConfig = 0, nil, nil
     hook.Add("Think", "DarkRP_chatRecipients", chatGetRecipients)
     hook.Add("HUDPaint", "DarkRP_DrawChatReceivers", drawChatReceivers)
 end
@@ -191,6 +213,7 @@ local function startFindVoice(ply)
     if shouldDraw == false then return end
 
     currentConfig = receiverConfigs["speak"]
+    lastRun, lastText, lastConfig = 0, nil, nil
     hook.Add("Think", "DarkRP_chatRecipients", chatGetRecipients)
     hook.Add("HUDPaint", "DarkRP_DrawChatReceivers", drawChatReceivers)
 end
