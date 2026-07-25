@@ -624,14 +624,6 @@ function GM:PlayerSetModel(ply)
 end
 
 local function initPlayer(ply)
-    timer.Simple(5, function()
-        if not IsValid(ply) then return end
-
-        if GetGlobalBool("DarkRP_Lockdown") then
-            SetGlobalBool("DarkRP_Lockdown", true) -- so new players who join know there's a lockdown, is this bug still there?
-        end
-    end)
-
     ply:initiateTax()
 
     ply:setSelfDarkRPVar("salary", DarkRP.retrieveSalary(ply))

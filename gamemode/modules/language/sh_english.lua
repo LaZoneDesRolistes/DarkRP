@@ -27,29 +27,16 @@ local my_language = {
     need_admin = "You need admin privileges in order to be able to %s",
     need_sadmin = "You need super admin privileges in order to be able to %s",
     no_privilege = "You don't have the right privileges to perform this action",
-    no_jail_pos = "No jail position",
     invalid_x = "Invalid %s! %s",
 
-    -- F1 menu
-    f1ChatCommandTitle = "Chat commands",
-    f1Search = "Search...",
 
     -- Money things:
     price = "Price: %s%d",
-    priceTag = "Price: %s",
     reset_money = "%s has reset all players' money!",
     has_given = "%s has given you %s",
     you_gave = "You gave %s %s",
     npc_killpay = "%s for killing an NPC!",
-    profit = "profit",
-    loss = "loss",
-    Donate = "Donate",
-    you_donated = "You have donated %s to %s!",
-    has_donated = "%s has donated %s!",
 
-    -- backwards compatibility
-    deducted_x = "Deducted %s%d",
-    need_x = "Need %s%d",
 
     deducted_money = "Deducted %s",
     need_money = "Need %s",
@@ -66,49 +53,13 @@ local my_language = {
     cheque_pay = "Pay: %s",
     signed = "Signed: %s",
 
-    found_cash = "You have picked up %s%d!", -- backwards compatibility
     found_money = "You have picked up %s!",
 
-    owner_poor = "The %s owner is too poor to subsidize this sale!",
-
     -- Police
-    Wanted_text = "Wanted!",
     wanted = "Wanted by Police!\nReason: %s",
-    youre_arrested = "You have been arrested. Time left: %d seconds!",
-    youre_arrested_by = "You have been arrested by %s.",
-    youre_unarrested_by = "You were unarrested by %s.",
-    hes_arrested = "%s has been arrested for %d seconds!",
-    hes_unarrested = "%s has been released from jail!",
-    warrant_ordered = "%s ordered a search warrant for %s. Reason: %s",
-    warrant_approved = "Search warrant approved for %s!\nReason: %s\nOrdered by: %s",
-    warrant_approved2 = "You are now able to search his house.",
-    warrant_expired = "The search warrant for %s has expired!",
     warrant_required = "You need a warrant in order to be able to open this door.",
     warrant_required_unfreeze = "You need a warrant in order to be able to unfreeze this prop.",
     warrant_required_unweld = "You need a warrant in order to be able to unweld this prop.",
-    wanted_by_police = "%s is wanted by the police!\nReason: %s\nOrdered by: %s",
-    wanted_by_police_print = "%s has made %s wanted, reason: %s",
-    wanted_expired = "%s is no longer wanted by the Police.",
-    wanted_revoked = "%s is no longer wanted by the Police.\nRevoked by: %s",
-    cant_arrest_other_cp = "You cannot arrest other CPs!",
-    must_be_wanted_for_arrest = "The player must be wanted in order to be able to arrest them.",
-    cant_arrest_fadmin_jailed = "You cannot arrest a player who has been jailed by an admin.",
-    cant_arrest_no_jail_pos = "You cannot arrest people since there are no jail positions set!",
-    cant_arrest_spawning_players = "You cannot arrest players who are spawning.",
-
-    suspect_doesnt_exist = "Suspect does not exist.",
-    actor_doesnt_exist = "Actor does not exist.",
-    get_a_warrant = "get a warrant",
-    remove_a_warrant = "remove a warrant",
-    make_someone_wanted = "make someone wanted",
-    remove_wanted_status = "remove wanted status",
-    already_a_warrant = "There already is a search warrant for this suspect.",
-    not_warranted = "There is no search warrant for this person.",
-    already_wanted = "The suspect is already wanted.",
-    not_wanted = "The suspect is not wanted.",
-    need_to_be_cp = "You have to be a member of the police force.",
-    suspect_must_be_alive_to_do_x = "The suspect must be alive in order to %s.",
-    suspect_already_arrested = "The suspect is already in jail.",
 
     -- Players
     health = "Health: %s",
@@ -122,27 +73,14 @@ local my_language = {
     disconnected_player = "Disconnected player",
     player = "player",
 
-    -- Teams
-    need_to_be_before = "You need to be %s first in order to be able to become %s",
-    team_limit_reached = "Can not become %s as the limit is reached",
-    job_has_become = "%s has been made a %s!",
 
-    -- Disasters
-    meteor_approaching = "WARNING: Meteor storm approaching!",
-    meteor_passing = "Meteor storm passing.",
-    meteor_enabled = "Meteor Storms are now enabled.",
-    meteor_disabled = "Meteor Storms are now disabled.",
-    earthquake_report = "Earthquake reported of magnitude %sMw",
-    earthtremor_report = "Earth tremor reported of magnitude %sMw",
 
     -- Keys, vehicles and doors
-    keys_allowed_to_coown = "You are allowed to co-own this\n(Press Reload with keys or press F2 to co-own)\n",
     keys_other_allowed = "Allowed to co-own:",
     keys_allow_ownership = "(Press Reload with keys or press F2 to allow ownership)",
     keys_disallow_ownership = "(Press Reload with keys or press F2 to disallow ownership)",
     keys_owned_by = "Owned by:",
     keys_unowned = "Unowned\n(Press Reload with keys or press F2 to own)",
-    keys_everyone = "(Press Reload with keys or press F2 to enable for everyone)",
     door_unown_arrested = "You can not own or unown things while arrested!",
     door_unownable = "This door cannot be owned or unowned!",
     door_sold = "You have sold this for %s",
@@ -151,53 +89,27 @@ local my_language = {
     vehicle_cannot_afford = "You can not afford this vehicle!",
     door_bought = "You've bought this door for %s%s",
     vehicle_bought = "You've bought this vehicle for %s%s",
-    door_need_to_own = "You need to own this door in order to be able to %s",
     door_rem_owners_unownable = "You can not remove owners if a door is non-ownable!",
     door_add_owners_unownable = "You can not add owners if a door is non-ownable!",
     rp_addowner_already_owns_door = "%s already owns (or is already allowed to own) this door!",
     add_owner = "Add owner",
     remove_owner = "Remove owner",
-    coown_x = "Co-own %s",
     allow_ownership = "Allow ownership",
     disallow_ownership = "Disallow ownership",
     edit_door_group = "Edit door group",
     door_groups = "Door groups",
     door_group_doesnt_exist = "Door group does not exist!",
     door_group_set = "Door group set successfully.",
-    sold_x_doors_for_y = "You have sold %d doors for %s%d!", -- backwards compatibility
     sold_x_doors = "You have sold %d doors for %s!",
     no_doors_owned = "You don't own any doors!",
 
-    -- Entities
-    drugs = "drugs",
-    Drugs = "Drugs",
-    drug_lab = "Drug Lab",
-    gun_lab = "Gun Lab",
-    any_lab = "any lab",
-    gun = "gun",
-    microwave = "Microwave",
-    food = "food",
-    Food = "Food",
-    money_printer = "Money Printer",
-    tip_jar = "Tip Jar",
 
     sign_this_letter = "Sign this letter",
     signed_yours = "Yours,",
 
-    money_printer_exploded = "Your money printer has exploded!",
-    money_printer_overheating = "Your money printer is overheating!",
-
-    contents = "Contents: ",
     amount = "Amount: ",
 
     picking_lock = "Picking lock",
-
-    cannot_pocket_x = "You cannot put this in your pocket!",
-    cannot_pocket_gravgunned = "You cannot put this in your pocket: it is being held by a gravgun.",
-    object_too_heavy = "This object is too heavy.",
-    pocket_full = "Your pocket is full!",
-    pocket_no_items = "Your pocket contains no items.",
-    drop_item = "Drop item",
 
     bonus_destroying_entity = "destroying this illegal entity.",
 
@@ -227,10 +139,7 @@ local my_language = {
     confiscated_these_weapons = "Confiscated these weapons:",
     checking_weapons = "Confiscating weapons",
 
-    shipment_antispam_wait = "Please wait before spawning another shipment.",
     createshipment = "Create a shipment",
-    splitshipment = "Split this shipment",
-    shipment_cannot_split = "Cannot split this shipment.",
 
     -- Talking
     hear_noone = "No-one can hear you %s!",
@@ -241,9 +150,7 @@ local my_language = {
     yell = "yell",
     broadcast = "[Broadcast!]",
     radio = "radio",
-    request = "(REQUEST!)",
     group = "(group)",
-    demote = "(DEMOTE)",
     ooc = "OOC",
     radio_x = "Radio %d",
 
@@ -267,30 +174,16 @@ local my_language = {
     have_to_wait = "You need to wait another %d seconds before using %s!",
     must_be_looking_at = "You need to be looking at a %s!",
     incorrect_job = "You do not have the right job to %s",
-    unavailable = "This %s is unavailable",
     unable = "You are unable to %s. %s",
     cant_afford = "You cannot afford this %s",
     created_x = "%s created a %s",
     cleaned_up = "Your %s were cleaned up.",
-    you_bought_x = "You have bought %s for %s%d.", -- backwards compatibility
     you_bought = "You have bought %s for %s.",
     you_got_yourself = "You got yourself a %s.",
     you_received_x = "You have received %s for %s.",
 
-    created_first_jailpos = "You have created the first jail position!",
-    added_jailpos = "You have added one extra jail position!",
-    reset_add_jailpos = "You have removed all jail positions and you have added a new one here.",
-    created_spawnpos = "You have added a spawn position for %s.",
-    updated_spawnpos = "You have removed all spawn positions for %s and added a new one here.",
-    remove_spawnpos = "You have removed all spawn positions for %s.",
     do_not_own_ent = "You do not own this entity!",
     cannot_drop_weapon = "Can't drop this weapon!",
-    job_switch = "Jobs switched successfully!",
-    job_switch_question = "Switch jobs with %s?",
-    job_switch_requested = "Job switch requested.",
-    switch_jobs = "switch jobs",
-
-    cooks_only = "Cooks only.",
 
     -- Misc
     unknown = "Unknown",
@@ -303,41 +196,11 @@ local my_language = {
     name = "Name: %s",
     locked = "Locked.",
     unlocked = "Unlocked.",
-    player_doesnt_exist = "Player does not exist.",
     job_doesnt_exist = "Job does not exist!",
     must_be_alive_to_do_x = "You must be alive in order to %s.",
-    banned_or_demoted = "Banned/demoted",
     wait_with_that = "Wait with that.",
     could_not_find = "Could not find %s",
-    f3tovote = "Hit F3 to vote",
-    listen_up = "Listen up:", -- In rp_tell or rp_tellall
-    nlr = "New Life Rule: Do Not Revenge Arrest/Kill.",
-    reset_settings = "You have reset all settings!",
-    must_be_x = "You must be a %s in order to be able to %s.",
     agenda = "agenda",
-    agenda_updated = "The agenda has been updated",
-    job_set = "%s has set their job to '%s'",
-    demote_vote = "demote",
-    demoted = "%s has been demoted",
-    demoted_not = "%s has not been demoted",
-    demote_vote_started = "%s has started a vote for the demotion of %s",
-    demote_vote_text = "Demotion nominee:\n%s", -- '%s' is the reason here
-    cant_demote_self = "You cannot demote yourself.",
-    i_want_to_demote_you = "I want to demote you. Reason: %s",
-    tried_to_avoid_demotion = "You tried to escape demotion. You failed and have been demoted.", -- naughty boy!
-    lockdown_started = "The mayor has initiated a Lockdown, please return to your homes!",
-    lockdown_ended = "The lockdown has ended",
-    gunlicense_granted = "%s has granted %s a gun license",
-    gunlicense_denied = "%s has denied %s a gun license",
-    vote_specify_reason = "You need to specify a reason!",
-    vote_started = "The vote has been created",
-    vote_alone = "You have won the vote since you are alone in the server.",
-    you_cannot_vote = "You cannot vote!",
-    x_cancelled_vote = "%s cancelled the last vote.",
-    cant_cancel_vote = "Could not cancel the last vote as there was no last vote to cancel!",
-    jail_punishment = "Punishment for disconnecting! Jailed for: %d seconds.",
-    admin_only = "Admin only!", -- When doing /addjailpos
-    chief_or = "Chief or ",-- When doing /addjailpos
     frozen = "Frozen.",
     recipient = "recipient",
     forbidden_name = "Forbidden name.",
@@ -362,19 +225,7 @@ local my_language = {
 
     not_allowed_to_purchase = "You are not allowed to purchase this item.",
 
-    rp_teamban_hint = "rp_teamban [player name/ID] [team name/id]. Use this to ban a player from a certain team.",
-    rp_teamunban_hint = "rp_teamunban [player name/ID] [team name/id]. Use this to unban a player from a certain team.",
-    x_teambanned_y_for_z = "%s has banned %s from being a %s for %s minutes.",
-    x_teamunbanned_y = "%s has unbanned %s from being a %s.",
 
-    -- Backwards compatibility:
-    you_set_x_salary_to_y = "You set %s's salary to %s%d.",
-    x_set_your_salary_to_y = "%s set your salary to %s%d.",
-    you_set_x_money_to_y = "You set %s's money to %s%d.",
-    x_set_your_money_to_y = "%s set your money to %s%d.",
-
-    you_set_x_salary = "You set %s's salary to %s.",
-    x_set_your_salary = "%s set your salary to %s.",
     you_set_x_money = "You set %s's money to %s.",
     x_set_your_money = "%s set your money to %s.",
     you_set_x_name = "You set %s's name to %s",
@@ -383,16 +234,11 @@ local my_language = {
     someone_stole_steam_name = "Someone is already using your Steam name as their RP name so we gave you a '1' after your name.", -- Uh oh
     already_taken = "Already taken.",
 
-    x_made_you_a_y = "%s has made you a %s!",
-
     cmd_cant_be_run_server_console = "This command cannot be run from the server console.",
-
-    distance_too_big = "Distance too big.",
 
     -- VGUI and some more doors/vehicles
     vote = "Vote",
     time = "Time: %d",
-    yes = "Yes",
     no = "No",
     ok = "Okay",
     cancel = "Cancel",
@@ -408,58 +254,19 @@ local my_language = {
     buy_x = "Buy %s",
 
     ammo = "ammo",
-    weapon_ = "weapon",
     shipment = "shipment",
     shipments = "shipments",
 
-    -- Tab 1
-    give_money = "Give money to the player you're looking at",
-    drop_money = "Drop money",
-    change_name = "Change your DarkRP name",
-    drop_weapon = "Drop current weapon",
-    buy_health = "Buy health(%s)",
-    request_gunlicense = "Request gunlicense",
-    demote_player_menu = "Demote a player",
 
-    searchwarrantbutton = "Make a player wanted",
-    unwarrantbutton = "Remove the wanted status from a player",
     noone_available = "No one available",
-    request_warrant = "Request a search warrant for a player",
-    make_wanted = "Make someone wanted",
-    make_unwanted = "Make someone unwanted",
-    set_jailpos = "Set the jail position",
-    add_jailpos = "Add a jail position",
 
-    set_custom_job = "Set a custom job (press enter to activate)",
 
-    set_agenda = "Set the agenda (press enter to activate)",
-
-    initiate_lockdown = "Initiate a lockdown",
-    stop_lockdown = "Stop the lockdown",
-    give_license_lookingat = "Give <lookingat> a gun license",
-
-    laws_of_the_land = "LAWS OF THE LAND",
-    law_added = "Law added.",
-    law_removed = "Law removed.",
-    law_reset = "Laws reset.",
-    law_too_short = "Law too short.",
-    laws_full = "The laws are full.",
-    default_law_change_denied = "You are not allowed to change the default laws.",
-
-    -- Second tab
-    job_name = "Name: ",
-    job_description = "Description: ",
-    job_weapons = "Weapons: ",
-
-    -- Entities tab
-    buy_a = "Buy %s: %s",
 
     -- Licenseweaponstab
     license_tab = [[License weapons
 
     Tick the weapons people should be able to get WITHOUT a license!
     ]],
-    license_tab_other_weapons = "Other weapons:",
 }
 
 -- The language code is usually (but not always) a two-letter code. The default language is "en".
