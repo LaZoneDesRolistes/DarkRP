@@ -46,3 +46,14 @@ DarkRP.createCategory{
     canSee = fp{fn.Id, true},
     sortOrder = 255,
 }
+
+-- Celle-ci vivait dans config/ammotypes.lua, supprimé avec les trois munitions par
+-- défaut. Le selfcheck de darkrpmodification l'a signalée manquante au démarrage.
+DarkRP.createCategory{
+    name = "Other",
+    categorises = "ammo",
+    startExpanded = true,
+    color = Color(0, 107, 0, 255),
+    canSee = fp{fn.Id, true},
+    sortOrder = 255,
+}

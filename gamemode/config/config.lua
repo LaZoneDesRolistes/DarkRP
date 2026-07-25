@@ -72,10 +72,6 @@ GM.Config.disallowClientsideScripts     = false
 GM.Config.doorwarrants                  = true
 -- dropmoneyondeath - Enable/disable whether people drop money on death.
 GM.Config.dropmoneyondeath              = false
--- droppocketarrest - Enable/disable whether people drop the stuff in their pockets when they get arrested.
-GM.Config.droppocketarrest              = false
--- droppocketdeath - Enable/disable whether people drop the stuff in their pockets when they die.
-GM.Config.droppocketdeath               = true
 -- dropweapondeath - Enable/disable whether people drop their current weapon when they die.
 GM.Config.dropweapondeath               = false
 -- Whether players can drop the weapons they spawn with.
@@ -84,8 +80,6 @@ GM.Config.dropspawnedweapons            = false
 GM.Config.dynamicvoice                  = true
 -- earthquakes - Enable/disable earthquakes.
 GM.Config.earthquakes                   = false
--- enablebuypistol - Turn /buy on of off.
-GM.Config.enablebuypistol               = true
 -- enforceplayermodel - Whether or not to force players to use their role-defined character models.
 GM.Config.enforceplayermodel            = true
 -- globalshow - Whether or not to display player info above players' heads in-game.
@@ -238,12 +232,6 @@ GM.Config.normalsalary                  = 45
 GM.Config.npckillpay                    = 10
 -- paydelay - Sets how long it takes before people get salary.
 GM.Config.paydelay                      = 160
--- pocketitems - Sets the amount of objects the pocket can carry.
-GM.Config.pocketitems                   = 10
--- pricecap - The maximum price of items (using /price).
-GM.Config.pricecap                      = 500
--- pricemin - The minimum price of items (using /price).
-GM.Config.pricemin                      = 50
 -- propcost - How much prop spawning should cost (prop paying must be enabled for this to have an effect).
 GM.Config.propcost                      = 10
 -- quakechance - Chance of an earthquake happening.
@@ -270,8 +258,6 @@ GM.Config.startingmoney                 = 500
 -- When between 0 and 1, the damage is relative, where 1 takes the entire health of the entity.
 -- When above 1, the damage is absolute
 GM.Config.stunstickdamage               = 1000
--- vehiclecost - Sets the cost of a vehicle (To own it).
-GM.Config.vehiclecost                   = 40
 -- wallettaxmax - Maximum percentage of tax to be paid.
 GM.Config.wallettaxmax                  = 5
 -- wallettaxmin - Minimum percentage of tax to be paid.
@@ -339,7 +325,6 @@ GM.Config.DisallowDrop = {
     ["keys"] = true,
     ["lockpick"] = true,
     ["med_kit"] = true,
-    ["pocket"] = true,
     ["stunstick"] = true,
     ["unarrest_stick"] = true,
     ["weapon_keypadchecker"] = true,
@@ -354,7 +339,6 @@ GM.Config.DefaultWeapons = {
     "weapon_physcannon",
     "gmod_camera",
     "gmod_tool",
-    "pocket",
     "weapon_physgun",
 }
 
@@ -424,7 +408,6 @@ GM.Config.noStripWeapons = {
 GM.Config.preventClassItemRemoval = {
     ["gunlab"] = false,
     ["microwave"] = false,
-    ["spawned_shipment"] = false,
 }
 
 -- Properties set to true are allowed to be used. Values set to false or are missing from this list are blocked.

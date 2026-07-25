@@ -894,63 +894,7 @@ DarkRP.hookStub{
     }
 }
 
-DarkRP.hookStub{
-    name = "playerBoughtPistol",
-    description = "Called when a player bought a pistol.",
-    parameters = {
-        {
-            name = "ply",
-            description = "The player.",
-            type = "Player"
-        },
-        {
-            name = "weaponTable",
-            description = "The table (from the CustomShipments table).",
-            type = "table"
-        },
-        {
-            name = "ent",
-            description = "The spawned weapon.",
-            type = "Weapon"
-        },
-        {
-            name = "price",
-            description = "The eventual price.",
-            type = "number"
-        }
-    },
-    returns = {
-    }
-}
 
-DarkRP.hookStub{
-    name = "playerBoughtShipment",
-    description = "Called when a player bought a shipment.",
-    parameters = {
-        {
-            name = "ply",
-            description = "The player.",
-            type = "Player"
-        },
-        {
-            name = "shipmentTable",
-            description = "The table (from the CustomShipments table).",
-            type = "table"
-        },
-        {
-            name = "ent",
-            description = "The spawned entity.",
-            type = "Entity"
-        },
-        {
-            name = "price",
-            description = "The eventual price.",
-            type = "number"
-        }
-    },
-    returns = {
-    }
-}
 
 DarkRP.hookStub{
     name = "playerBoughtCustomVehicle",
@@ -1010,34 +954,6 @@ DarkRP.hookStub{
     }
 }
 
-DarkRP.hookStub{
-    name = "playerBoughtAmmo",
-    description = "Called when a player buys some ammo.",
-    parameters = {
-        {
-            name = "ply",
-            description = "The player.",
-            type = "Player"
-        },
-        {
-            name = "ammoTable",
-            description = "The table (from the AmmoTypes table).",
-            type = "table"
-        },
-        {
-            name = "ent",
-            description = "The spawned ammo entity.",
-            type = "Weapon"
-        },
-        {
-            name = "price",
-            description = "The eventual price.",
-            type = "number"
-        }
-    },
-    returns = {
-    }
-}
 
 DarkRP.hookStub{
     name = "canDemote",
